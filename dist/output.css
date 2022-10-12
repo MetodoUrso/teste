@@ -1044,6 +1044,14 @@ video {
     margin-top: 0px;
   }
 
+  .lg\:ml-\[6\.5\%\] {
+    margin-left: 6.5%;
+  }
+
+  .lg\:mr-\[6\.5\%\] {
+    margin-right: 6.5%;
+  }
+
   .lg\:mb-0 {
     margin-bottom: 0px;
   }
@@ -1118,6 +1126,10 @@ video {
 
   .lg\:p-0 {
     padding: 0px;
+  }
+
+  .lg\:p-3 {
+    padding: 0.75rem;
   }
 
   .lg\:py-5 {
