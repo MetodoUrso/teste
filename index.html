@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <link href="dist/output.css" rel="stylesheet">
     <title>Consultoria - Guilherme Santos</title>
     <style>
@@ -24,6 +25,33 @@
         }
         .font-montserrat {
             font-family: 'Montserrat', sans-serif;
+        }
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -74,23 +102,21 @@
                 <p class="text-[#142339] -mb-2">RESULTADOS</p>
                 <p class="text-[#B85E75]">TEAM GUI SANTOS</p>
             </div>
-            <div class="relative overflow-x-hidden w-full lg:w-[80%] mt-5">
-                <div id="carousel1" class="flex items-center duration-1000 ease-in-out w-full space-x-[5%]">
-                    <div class="flex w-[80%] h-60 lg:h-96 shrink-0 grow-0 ml-[10%]">
-                        <img class="w-full rounded-xl" src="imagens/antesEdepois/antesEdepois1.jpg">
-                    </div>
-                    <div class="flex w-[80%] h-60 lg:h-96 shrink-0 grow-0">
-                        <img class="w-full rounded-xl" src="imagens/antesEdepois/antesEdepois2.jpg">
-                    </div>
-                    <div class="flex w-[80%] h-60 lg:h-96 shrink-0 grow-0">
-                        <img class="w-full rounded-xl" src="imagens/antesEdepois/antesEdepois3.jpg">
-                    </div>
-                    <div class="flex w-[80%] h-60 lg:h-96 shrink-0 grow-0">
-                        <img class="w-full rounded-xl" src="imagens/antesEdepois/antesEdepois4.jpg">
-                    </div>
+            <div class="swiper mySwiper w-[80%]">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="imagens/antesEdepois1.jpg"></div>
+                    <div class="swiper-slide"><img src="imagens/antesEdepois1.jpg"></div>
+                    <div class="swiper-slide"><img src="imagens/antesEdepois1.jpg"></div>
+                    <div class="swiper-slide"><img src="imagens/antesEdepois1.jpg"></div>
+                    <div class="swiper-slide"><img src="imagens/antesEdepois1.jpg"></div>
+                    <div class="swiper-slide"><img src="imagens/antesEdepois1.jpg"></div>
+                    <div class="swiper-slide"><img src="imagens/antesEdepois1.jpg"></div>
+                    <div class="swiper-slide"><img src="imagens/antesEdepois1.jpg"></div>
+                    <div class="swiper-slide"><img src="imagens/antesEdepois1.jpg"></div>
                 </div>
-                <button onclick="prev1()" class="absolute top-[42.5%] text-white rounded-full bg-[#B85E75] p-2 lg:p-3 ml-[2.5%] lg:ml-[4%]"><img src="imagens/icones/arrow-left.png"></button>
-                <button onclick="next1()" class="absolute top-[42.5%] text-white rounded-full bg-[#B85E75] p-2 lg:p-3 mr-[2.5%] lg:mr-[4%] right-0"><img src="imagens/icones/arrow-right.png"></button>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
             </div>
             <div class="flex justify-center w-full text-white text-center font-montserrat font-bold p-5 lg:p-0 lg:py-5">
                 <a class="w-full lg:w-1/3 rounded-xl bg-[#B85E75] shadow shadow-black p-3" href="#planos">ENTRAR PARA EQUIPE</a>
@@ -355,26 +381,24 @@
     </div>
     <!-- Rodapé -->
 
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    
     <script>
         // ------------------------------ Carrossel de Antes e Depois ------------------------------ \\
-        let carousel1 = document.querySelector("#carousel1");
-        let images1 = document.querySelectorAll("#carousel1 div");
-        let carouselIndex1;
-        function prev1() {
-            carouselIndex1 = parseInt(getComputedStyle(carousel1).getPropertyValue("--carousel-index"));
-            if (carouselIndex1 < 1)
-                carousel1.style.setProperty("--carousel-index", images1.length - 1);
-            else
-                carousel1.style.setProperty("--carousel-index", carouselIndex1 - 1);
-        }
-        function next1() {
-            carouselIndex1 = parseInt(getComputedStyle(carousel1).getPropertyValue("--carousel-index"));
-            if (carouselIndex1 >= images1.length - 1)
-                carousel1.style.setProperty("--carousel-index", 0);
-            else
-                carousel1.style.setProperty("--carousel-index", carouselIndex1 + 1);
-        }
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            slidesPerView: 4,
+            spaceBetween: 30,
+            centeredSlides: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
         // ------------------------------ Carrossel de Antes e Depois ------------------------------ \\
 
 
